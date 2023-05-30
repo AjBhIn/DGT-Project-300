@@ -1,6 +1,9 @@
-# Importing the pygame and sys.exit to be able to use pygame
+# Imports
 import pygame as pg
 import sys
+import race_track as rt
+import white_board as wt
+
 
 # initialising the pygame or starting pygame
 pg.init()
@@ -10,22 +13,25 @@ WIDTH, HEIGHT = 1042, 697
 window = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption("Quiz Race")
 
+
 # Icon
-icon = pg.image.load("DGT WORK (3).png")
-pg.display.set_icon(icon)
+ICON = pg.image.load("icon (2).png")
+pg.display.set_icon(ICON)
+
 
 # Fps control
 FPS = 60  # frame rate
 clock = pg.time.Clock()  # clock that will count
 
 # Colour
-game_active_col = (78, 205, 196)
+GAME_ACTIVE_BCOLOUR = (78, 205, 196)
 
 # Custom cursor
-image_of_cursor = pg.image.load("cursor (1).png")
+image_of_cursor = pg.image.load("cursor (1).png") # image of the cursor
 image_of_cursor_rotate = pg.transform.rotozoom(
     image_of_cursor, 30, 1)  # rotating the image
-cursor = pg.cursors.Cursor((11, 12), image_of_cursor_rotate)
+cursor = pg.cursors.Cursor((11, 12), image_of_cursor_rotate) # putting the image in cursor widget
+
 
 # Running or looping the game
 while True:
@@ -35,8 +41,21 @@ while True:
             sys.exit()
 
     # Putting color on the screen
-    window.fill(game_active_col)
+    window.fill(GAME_ACTIVE_BCOLOUR)
+    
+    # Putting the tracks on the screen
+    for each_lane in rt.tracks:
+        for each_step in each_lane:
+            window.blit(each_step[0], each_step[1])
+    window.blit(rt.starting_lane.line_surface, rt.starting_lane.pos)
+    window.blit(rt.finishing_lane.line_surface, rt.finishing_lane.pos)
+    
 
+    # Putting the white board on the screen
+    window.blit(wt.main_board.surface, (0, 347))
+    window.blit(wt.display_board.surface, (0, 388))
+    window.blit(rt.divider_lane.line_surface, rt.divider_lane.pos)
+    
     # putting a cursor on the screen
     pg.mouse.set_cursor(cursor)
 
