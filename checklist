@@ -1,0 +1,9 @@
+- Create a list of questions 
+    ! Try to make it only in questions file
+    
+- make them loop through
+    ! Try to make it only in questions file
+
+- Make the container of text repsonsive to each question
+    - meaning make it bigger or smaller according to the size and length of the text
+    - make the questions equally apart for every questions
