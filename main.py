@@ -4,6 +4,7 @@ import sys
 import race_track as rt
 import white_board as wt
 import questions as qs
+import answers as an
 
 
 # initialising the pygame or starting pygame
@@ -53,7 +54,7 @@ while True:
     window.blit(wt.display_board.surface, (0, 388))
     window.blit(rt.divider_lane.line_surface, rt.divider_lane.pos)
 
-    # Putting the container of teh question on the White Board
+    # Putting the container of the question on the White Board
     window.blit(qs.text_container, qs.text_container_pos)
 
     # putting a cursor on the screen

@@ -4,14 +4,12 @@ import pygame as pg
 # Have to started the font class before using it
 pg.font.init()
 
+# Questions list
+type_questions = [['Q10', "What is Complex Numbe"]]
+
 # Constant variables
-Q_num_colour = (255, 107, 107)
-Q_colour = (0,0,0)
 white_board_colour = (247, 255, 247)
-Q_num_margin_x = 10
-Question_margin_x = 8
-jura_bold = "Jura-Bold.ttf"
-question_size = 28
+
 
 # Text container or where the text will be info
 container_size = (400, 100)
@@ -22,28 +20,46 @@ text_container_pos = text_container.get_rect(center = (260,542))
 # Text Generator
 class Typer:
 
-    def __init__(self, textitself, text_color, pos_text, font_family = jura_bold, font_size = question_size):
-        # Font related info
-        self.textitself = textitself
-        self.text_color = text_color
-        self.font_size = font_size
-        self.font_family = font_family
-        self.pos = pos_text
+    # Question_maker funtions
+    def question_maker(self, question_num, question_itself):
+        # text sizer finder
+        Q_num_size = self.text_style.size(question_num)
+        Q_size = self.text_style.size(question_itself)
+
+        # generatering the question and question number
+        making_Q_num = self.text_style.render(question_num, self.antialias, self.Q_num_colour)
+        making_Question = self.text_style.render(question_itself, self.antialias, self.Q_colour)
+
+        # Taking control of the text box from it mid_left point
+        Q_num_pos = making_Q_num.get_rect(midleft = (self.Q_num_margin_x, self.text_y_pos))
+        Q_pos = making_Question.get_rect(midleft = ((self.Q_margin_x + Q_num_size[0] + self.Q_num_margin_x), self.text_y_pos))
+
+        #putting the text on the mini screen
+        text_container.blit(making_Q_num, Q_num_pos)
+        text_container.blit(making_Question, Q_pos)
+
+
+    # Attributes / colour and style and more
+    def __init__(self, question_list):
+        self.font_family = "Jura-Bold.ttf"
+        self.font_size = 28
         self.antialias = True
+        self.Q_num_colour = (255, 107, 107)
+        self.Q_colour = (0,0,0)
+        self.Q_num_margin_x = 10
+        self.Q_margin_x = 8
+        self.text_y_pos = 50
 
         # Style of the text
         self.text_style = pg.font.Font(self.font_family, self.font_size)
-        self.text_size = self.text_style.size(self.textitself)
 
-        # Making the Text and it pos
-        self.making_text = self.text_style.render(self.textitself, self.antialias, self.text_color)
-        self.text_pos = self.making_text.get_rect(midleft = self.pos) # Taking control of the text box from it mid_left point
-        
-        #putting the text on the mini screen
-        text_container.blit(self.making_text, self.text_pos)
+        # retvering the questions from the list
+        for each_question in question_list:
+            self.question_num = each_question[0]
+            self.question = each_question[1]
+            self.question_maker(self.question_num, self.question)
 
 
-Q1_num = Typer("Q1", Q_num_colour, (Q_num_margin_x, 50))
-Q1_question = Typer("What is Complex Numbe", Q_colour, (48, 50))
+questions = Typer(type_questions)
 
 
