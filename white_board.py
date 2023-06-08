@@ -1,3 +1,5 @@
+print("Yes from WHite Board")
+
 # Imports all here
 import pygame as pg
 

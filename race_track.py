@@ -39,7 +39,7 @@ fifth_lane = TrackLineCreator(290)
 
 starting_lane = TrackLineCreator(0, 1, 347, 59)
 finishing_lane = TrackLineCreator(0, 1, 347, 982)
-divider_lane = TrackLineCreator(388, 1, 310, 521, TRACK_COLOUR, 255) # Divider lane in the white board
+divider_lane = TrackLineCreator(0, 1, 310, 521, TRACK_COLOUR, 255) # Divider lane in the white board
 
 # Has all the trakcs in a list as it is easy to import while using less variables
 tracks = [first_lane.lines, second_lane.lines, thrid_lane.lines, forth_lane.lines, fifth_lane.lines]

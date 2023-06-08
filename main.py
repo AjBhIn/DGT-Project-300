@@ -51,11 +51,14 @@ while True:
     
     # Putting the white board on the screen
     window.blit(wt.main_board.surface, (0, 347))
-    window.blit(wt.display_board.surface, (0, 388))
-    window.blit(rt.divider_lane.line_surface, rt.divider_lane.pos)
+    wt.main_board.surface.blit(wt.display_board.surface, (0, 40))
+    wt.display_board.surface.blit(rt.divider_lane.line_surface, rt.divider_lane.pos)
 
     # Putting the container of the question on the White Board
-    window.blit(qs.text_container, qs.text_container_pos)
+    wt.display_board.surface.blit(qs.text_container, qs.text_container_pos)
+
+    # Putting the answers boxes on the display board
+    an.anwers.text_creator()
 
     # putting a cursor on the screen
     pg.mouse.set_cursor(cursor)

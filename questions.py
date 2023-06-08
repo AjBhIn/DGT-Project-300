@@ -5,22 +5,20 @@ import pygame as pg
 pg.font.init()
 
 # Questions list
-type_questions = [['Q10', "What is Complex Numbe"]]
+type_questions = [['Q1', "What is Complex Numbe"]]
 
 # Constant variables
 white_board_colour = (247, 255, 247)
-
 
 # Text container or where the text will be info
 container_size = (400, 100)
 text_container = pg.surface.Surface(container_size)
 text_container.fill(white_board_colour)
-text_container_pos = text_container.get_rect(center = (260,542))
+text_container_pos = text_container.get_rect(center = (260,155))
 
 # Text Generator
 class Typer:
 
-    # Question_maker funtions
     def question_maker(self, question_num, question_itself):
         # text sizer finder
         Q_num_size = self.text_style.size(question_num)
@@ -30,7 +28,7 @@ class Typer:
         making_Q_num = self.text_style.render(question_num, self.antialias, self.Q_num_colour)
         making_Question = self.text_style.render(question_itself, self.antialias, self.Q_colour)
 
-        # Taking control of the text box from it mid_left point
+        # Taking control of the text box from it mid_left point // setting the position of the text box
         Q_num_pos = making_Q_num.get_rect(midleft = (self.Q_num_margin_x, self.text_y_pos))
         Q_pos = making_Question.get_rect(midleft = ((self.Q_margin_x + Q_num_size[0] + self.Q_num_margin_x), self.text_y_pos))
 
@@ -39,7 +37,6 @@ class Typer:
         text_container.blit(making_Question, Q_pos)
 
 
-    # Attributes / colour and style and more
     def __init__(self, question_list):
         self.font_family = "Jura-Bold.ttf"
         self.font_size = 28
@@ -48,7 +45,7 @@ class Typer:
         self.Q_colour = (0,0,0)
         self.Q_num_margin_x = 10
         self.Q_margin_x = 8
-        self.text_y_pos = 50
+        self.text_y_pos = 50 # this is in reference to text container
 
         # Style of the text
         self.text_style = pg.font.Font(self.font_family, self.font_size)
@@ -59,7 +56,7 @@ class Typer:
             self.question = each_question[1]
             self.question_maker(self.question_num, self.question)
 
-
+# passing the questions into the class // instance of the class
 questions = Typer(type_questions)
 
 
