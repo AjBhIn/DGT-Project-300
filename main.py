@@ -3,8 +3,7 @@ import pygame as pg
 import sys
 import race_track as rt
 import white_board as wt
-import questions as qs
-import answers as an
+import questions_answers as qs
 
 
 # initialising the pygame or starting pygame
@@ -54,11 +53,8 @@ while True:
     wt.main_board.surface.blit(wt.display_board.surface, (0, 40))
     wt.display_board.surface.blit(rt.divider_lane.line_surface, rt.divider_lane.pos)
 
-    # Putting the container of the question on the White Board
-    wt.display_board.surface.blit(qs.text_container, qs.text_container_pos)
-
-    # Putting the answers boxes on the display board
-    an.anwers.text_creator()
+    # Putting the question on the white board
+    qs.Q1.question_on_screen()
 
     # putting a cursor on the screen
     pg.mouse.set_cursor(cursor)
