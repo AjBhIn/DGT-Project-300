@@ -53,8 +53,8 @@ while True:
     wt.main_board.surface.blit(wt.display_board.surface, (0, 40))
     wt.display_board.surface.blit(rt.divider_lane.line_surface, rt.divider_lane.pos)
 
-    # Putting the question on the white board
-    qs.Q1.question_on_screen()
+    # Putting the question on the display board
+    qs.Q1.font_container_render()
 
     # putting a cursor on the screen
     pg.mouse.set_cursor(cursor)
